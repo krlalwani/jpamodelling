@@ -17,6 +17,9 @@ public class Receipe {
     private String source;
     private String directions;
 
+    @Enumerated(value = EnumType.STRING)  //LOV identifier with integers as primary keys if EnumType is selected as ORDINAL
+    private Difficulty difficulty;   //enum or LOV
+
     @Lob    //for a large object string to be allowed
     private byte[] image;
     @OneToOne(cascade = CascadeType.ALL)  //if receipe is deleted, the corresponding notes get deleted.
@@ -90,6 +93,14 @@ public class Receipe {
         this.directions = directions;
     }
 
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
     public byte[] getImage() {
         return image;
     }
@@ -104,5 +115,13 @@ public class Receipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }
