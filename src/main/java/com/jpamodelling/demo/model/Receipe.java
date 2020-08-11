@@ -25,7 +25,7 @@ public class Receipe {
     @OneToOne(cascade = CascadeType.ALL)  //if receipe is deleted, the corresponding notes get deleted.
     private Notes notes;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receipe")  //mapped by is the target property in the Ingredient class which is used for mapping
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receipe")  //mapped by is the target property or column in the Ingredient class which is used for mapping
     private Set<Ingredient> ingredients;
 
 
