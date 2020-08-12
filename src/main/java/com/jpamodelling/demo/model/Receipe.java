@@ -28,6 +28,10 @@ public class Receipe {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "receipe")  //mapped by is the target property or column in the Ingredient class which is used for mapping
     private Set<Ingredient> ingredients;
 
+    @ManyToMany
+    @JoinTable(name="receipe_category", joinColumns = @JoinColumn(name="receipe_id"),inverseJoinColumns = @JoinColumn(name="category_id"))  //mapping columns and creation of one mapping table
+    private Set<Category> categories;
+
 
     public Long getId() {
         return id;
@@ -123,5 +127,13 @@ public class Receipe {
 
     public void setIngredients(Set<Ingredient> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 }
