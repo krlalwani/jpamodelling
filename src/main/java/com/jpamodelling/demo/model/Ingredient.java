@@ -18,6 +18,17 @@ public class Ingredient {
     @OneToOne(fetch = FetchType.EAGER)  //quickly fetch the child class table
     private UnitOfMeasure uom;
 
+    public Ingredient() {
+    }
+
+    public Ingredient(Long id, String description, BigDecimal amount, Receipe receipe, UnitOfMeasure uom) {
+        this.id = id;
+        this.description = description;
+        this.amount = amount;
+        this.receipe = receipe;
+        this.uom = uom;
+    }
+
     public Long getId() {
         return id;
     }

@@ -1,6 +1,7 @@
 package com.jpamodelling.demo.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -26,11 +27,11 @@ public class Receipe {
     private Notes notes;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "receipe")  //mapped by is the target property or column in the Ingredient class which is used for mapping
-    private Set<Ingredient> ingredients;
+    private Set<Ingredient> ingredients = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name="receipe_category", joinColumns = @JoinColumn(name="receipe_id"),inverseJoinColumns = @JoinColumn(name="category_id"))  //mapping columns and creation of one mapping table
-    private Set<Category> categories;
+    private Set<Category> categories= new HashSet<>();
 
 
     public Long getId() {
